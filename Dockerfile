@@ -10,7 +10,7 @@ RUN apt-get install -y nodejs
 RUN npm i -g npm
 
 RUN mkdir /VideoBot/
-RUN git clone -b test https://github.com/the-noobest-pro/VIDEO-PLAYER /VideoBot
+RUN git clone -b test https://github.com/Lost-In-Dark/VIDEO-PLAYER /VideoBot
 WORKDIR /VideoBot
 
 RUN pip3 install --upgrade pip
