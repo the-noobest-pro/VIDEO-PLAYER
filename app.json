@@ -1,0 +1,43 @@
+{
+    "name": "VIDEO-PLAYER",
+    "description": "A bot that can play Videos in Telegram Voice Chats",
+    "logo": "https://telegra.ph/file/12a12ad933f3f972deb61.jpg",
+    "keywords": [
+        "VIDEOPLAY",
+        "Telegram Bot"
+    ],
+    "repository": "https://github.com/the-noobest-pro/VIDEO-PLAYER",
+    "env": {
+        "SESSION": {
+            "description": "Pyrogram String Session",
+            "required": true
+        },
+        "API_ID": {
+            "description": "my.telegram.org",
+            "required": false
+        },
+        "API_HASH": {
+            "description": "my.telegram.org",
+            "required": false
+        },
+        "HNDLR": {
+            "description": "Handler | Default (!)",
+            "value": "!",
+            "required": false
+        }
+    },
+    "addons": [],
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        }
+    ],
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    },
+    "stack": "container"
+}
+    
