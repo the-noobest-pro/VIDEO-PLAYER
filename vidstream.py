@@ -56,6 +56,14 @@ async def get_youtube_stream(ytlink):
         stdout, stderr = await proc.communicate()
         return stdout.decode().split('\n')[0]
 
+# TimePass
+async def bash(cmd):
+    process = await asyncio.create_subprocess_shell(
+        cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
+    )
+    stdout , stderr= await process.communicate()
+    return stdout.decode()
+
 
 # Client and PyTgCalls
 API_ID = int(os.getenv("API_ID", "6"))
@@ -344,8 +352,14 @@ async def kill(client, m: Message):
 
 @bot.on_message(self_or_contact_filter & filters.command("help", prefixes=f"{HNDLR}"))
 async def help(client, m: Message):
-   await m.reply(f"**🛠 HELP MENU** \n\n`{HNDLR}ping` \n`{HNDLR}vplay query` \n`{HNDLR}vstream link` \n`{HNDLR}vstop` \n`{HNDLR}pause` \n`{HNDLR}resume` \n`{HNDLR}restart`")
-   
+   await m.reply(f"**🛠 HELP MENU** \n\n`{HNDLR}ping` \n`{HNDLR}vplay query` \n`{HNDLR}vstream link` \n`{HNDLR}vstop` \n`{HNDLR}pause` \n`{HNDLR}resume` \n`{HNDLR}update` \n`{HNDLR}restart`")
+
+@bot.on_message(self_or_contact_filter & filters.command("update", prefixes=f"{HNDLR}"))
+async def update(client, m: Message):
+   hmm = await bash("git pull -f")
+   await m.reply(f"`{hmm}`")
+   os.execl(sys.executable, "python3", "-m", "vidstream.py")
+
 @bot.on_message(self_or_contact_filter & filters.command("restart", prefixes=f"{HNDLR}"))
 async def restart(client, m: Message):
    umm = await m.reply_text("`Restarting ⚙️...`")
