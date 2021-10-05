@@ -6,7 +6,7 @@
         "VIDEOPLAY",
         "Telegram Bot"
     ],
-    "repository": "https://github.com/the-noobest-pro/VIDEO-PLAYER",
+    "repository": "https://github.com/Lost-In-Dark/VIDEO-PLAYER",
     "env": {
         "SESSION": {
             "description": "Pyrogram String Session",
